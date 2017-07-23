@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace QBuild
 {
-    partial class Form1
+    partial class QBuildForm
     {
         /// <summary>
         /// Required designer variable.
@@ -373,7 +373,7 @@ namespace QBuild
             System.Windows.Forms.TreeNode treeNode189 = new System.Windows.Forms.TreeNode("PIPEPLUG200");
             System.Windows.Forms.TreeNode treeNode190 = new System.Windows.Forms.TreeNode("BOLT_ACT");
             System.Windows.Forms.TreeNode treeNode191 = new System.Windows.Forms.TreeNode("NUT_ACT");
-            System.Windows.Forms.TreeNode treeNode192 = new System.Windows.Forms.TreeNode("VALUE", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode192 = new System.Windows.Forms.TreeNode("VALVE", new System.Windows.Forms.TreeNode[] {
             treeNode78,
             treeNode79,
             treeNode85,
@@ -428,10 +428,14 @@ namespace QBuild
             this.bomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qBuildDataSet = new QBuild.QBuildDataSet();
             this.bomTableAdapter = new QBuild.QBuildDataSetTableAdapters.bomTableAdapter();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.QBuildGridView = new System.Windows.Forms.DataGridView();
+            this.populateDataButton = new System.Windows.Forms.Button();
+            this.Exit = new System.Windows.Forms.Button();
+            this.parentLabel = new System.Windows.Forms.Label();
+            this.currentBodyLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qBuildDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QBuildGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // treeView1
@@ -820,8 +824,8 @@ namespace QBuild
             treeNode190.Text = "BOLT_ACT";
             treeNode191.Name = "NUT_ACT";
             treeNode191.Text = "NUT_ACT";
-            treeNode192.Name = "VALUE";
-            treeNode192.Text = "VALUE";
+            treeNode192.Name = "VALVE";
+            treeNode192.Text = "VALVE";
             treeNode193.Name = "BON_RET_TOP";
             treeNode193.Text = "BON_RET_TOP";
             treeNode194.Name = "BON_RET_BOT";
@@ -853,29 +857,78 @@ namespace QBuild
             // 
             this.bomTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridView1
+            // QBuildGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 193);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(676, 150);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.QBuildGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.QBuildGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.QBuildGridView.Location = new System.Drawing.Point(23, 193);
+            this.QBuildGridView.Name = "QBuildGridView";
+            this.QBuildGridView.Size = new System.Drawing.Size(729, 189);
+            this.QBuildGridView.TabIndex = 1;
+            this.QBuildGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // QBuild
+            // populateDataButton
+            // 
+            this.populateDataButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.populateDataButton.Location = new System.Drawing.Point(386, 83);
+            this.populateDataButton.Name = "populateDataButton";
+            this.populateDataButton.Size = new System.Drawing.Size(154, 23);
+            this.populateDataButton.TabIndex = 2;
+            this.populateDataButton.Text = "Populate Data in Tree";
+            this.populateDataButton.UseVisualStyleBackColor = true;
+            this.populateDataButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Exit
+            // 
+            this.Exit.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit.Location = new System.Drawing.Point(386, 112);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(154, 23);
+            this.Exit.TabIndex = 3;
+            this.Exit.Text = "Exit from Application";
+            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // parentLabel
+            // 
+            this.parentLabel.AutoSize = true;
+            this.parentLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parentLabel.Location = new System.Drawing.Point(402, 24);
+            this.parentLabel.Name = "parentLabel";
+            this.parentLabel.Size = new System.Drawing.Size(0, 14);
+            this.parentLabel.TabIndex = 4;
+            this.parentLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // currentBodyLabel
+            // 
+            this.currentBodyLabel.AutoSize = true;
+            this.currentBodyLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentBodyLabel.Location = new System.Drawing.Point(402, 50);
+            this.currentBodyLabel.Name = "currentBodyLabel";
+            this.currentBodyLabel.Size = new System.Drawing.Size(82, 14);
+            this.currentBodyLabel.TabIndex = 4;
+            this.currentBodyLabel.Text = "Current Body :";
+            // 
+            // QBuildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 371);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(776, 394);
+            this.Controls.Add(this.currentBodyLabel);
+            this.Controls.Add(this.parentLabel);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.populateDataButton);
+            this.Controls.Add(this.QBuildGridView);
             this.Controls.Add(this.treeView1);
-            this.Name = "QBuild";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "QBuildForm";
             this.Text = "QBuild";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bomBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qBuildDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QBuildGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -890,7 +943,11 @@ namespace QBuild
         private QBuildDataSet qBuildDataSet;
         private System.Windows.Forms.BindingSource bomBindingSource;
         private QBuildDataSetTableAdapters.bomTableAdapter bomTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView QBuildGridView;
+        private Button populateDataButton;
+        private Button Exit;
+        private Label parentLabel;
+        private Label currentBodyLabel;
     }
 }
 
