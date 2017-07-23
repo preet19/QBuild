@@ -51,43 +51,52 @@ namespace QBuild
 
         }
 
+        /*
+         * get the data from database
+         * and populate data in gridview on click of a button
+         */
         private void button1_Click(object sender, EventArgs e)
         {
+            // change color of alternate rows of gridview
             QBuildGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+            //create a new connection to database
             search db = new search();
-            var tree = treeView1.SelectedNode.Name;
-            parentLabel.Text = "Parent Child Part: " + treeView1.SelectedNode.FullPath;
+            // returns the selected node
+            var tree = QBuildTreeView.SelectedNode.Name;
+            // set the label to full path of selected node
+            parentLabel.Text = "Parent Child Part: " + QBuildTreeView.SelectedNode.FullPath;
+            // change color of parent node label
             parentLabel.ForeColor = Color.Red;
+            // change color of current node label
             currentBodyLabel.ForeColor = Color.Green;
+            // set the current label to selected node text
             currentBodyLabel.Text = "Current Part: "+ tree;
 
-            // var list = (from bom in db.boms where bom.PARENT_NAME==tree  select bom).ToList();
-
-            var  result = (from lang in db.boms
-                             where lang.PARENT_NAME == tree
-                             join c in db.parts
-                             on lang.PARENT_NAME equals c.NAME
+           
+            // query to join the part and bom tables and return the selected columns
+            var  result = (  from bom in db.boms
+                             where bom.PARENT_NAME == tree
+                             join part in db.parts
+                             on bom.PARENT_NAME equals part.NAME
                           select new
                           {
-                              lang.PARENT_NAME,
-                              lang.COMPONENT_NAME,
-                              c.PART_NUMBER,
-                              c.TITLE,
-                              lang.QUANTITY,
-                              c.TYPE,
-                              c.ITEM,
-                              c.MATERIAL
+                              bom.PARENT_NAME,
+                              bom.COMPONENT_NAME,
+                              part.PART_NUMBER,
+                              part.TITLE,
+                              bom.QUANTITY,
+                              part.TYPE,
+                              part.ITEM,
+                              part.MATERIAL
                           }).ToList();
 
+            // populate the gridview with query result
                 QBuildGridView.DataSource = result;
 
-            //dataGridView1.DataSource = list;
-
+            
+            // disable the populate button after the query is done
             populateDataButton.Enabled = false;
-            
-
-            
-            
+           
             
         }
 

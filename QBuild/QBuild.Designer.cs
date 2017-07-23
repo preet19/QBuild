@@ -424,7 +424,7 @@ namespace QBuild
             treeNode194,
             treeNode195,
             treeNode196});
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.QBuildTreeView = new System.Windows.Forms.TreeView();
             this.bomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qBuildDataSet = new QBuild.QBuildDataSet();
             this.bomTableAdapter = new QBuild.QBuildDataSetTableAdapters.bomTableAdapter();
@@ -433,15 +433,16 @@ namespace QBuild
             this.Exit = new System.Windows.Forms.Button();
             this.parentLabel = new System.Windows.Forms.Label();
             this.currentBodyLabel = new System.Windows.Forms.Label();
+            this.headerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qBuildDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QBuildGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // treeView1
+            // QBuildTreeView
             // 
-            this.treeView1.Location = new System.Drawing.Point(23, 24);
-            this.treeView1.Name = "treeView1";
+            this.QBuildTreeView.Location = new System.Drawing.Point(23, 50);
+            this.QBuildTreeView.Name = "QBuildTreeView";
             treeNode1.Name = "BODY_SPOOL";
             treeNode1.Text = "BODY_SPOOL";
             treeNode2.Name = "TOP_CONE";
@@ -836,12 +837,12 @@ namespace QBuild
             treeNode196.Text = "BON_RET_LSIDE";
             treeNode197.Name = "BON_RET_ASSY";
             treeNode197.Text = "BON_RET_ASSY";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.QBuildTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode192,
             treeNode197});
-            this.treeView1.Size = new System.Drawing.Size(289, 163);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.QBuildTreeView.Size = new System.Drawing.Size(289, 163);
+            this.QBuildTreeView.TabIndex = 0;
+            this.QBuildTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // bomBindingSource
             // 
@@ -861,7 +862,7 @@ namespace QBuild
             // 
             this.QBuildGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.QBuildGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.QBuildGridView.Location = new System.Drawing.Point(23, 193);
+            this.QBuildGridView.Location = new System.Drawing.Point(23, 224);
             this.QBuildGridView.Name = "QBuildGridView";
             this.QBuildGridView.Size = new System.Drawing.Size(729, 189);
             this.QBuildGridView.TabIndex = 1;
@@ -870,7 +871,7 @@ namespace QBuild
             // populateDataButton
             // 
             this.populateDataButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.populateDataButton.Location = new System.Drawing.Point(386, 83);
+            this.populateDataButton.Location = new System.Drawing.Point(386, 124);
             this.populateDataButton.Name = "populateDataButton";
             this.populateDataButton.Size = new System.Drawing.Size(154, 23);
             this.populateDataButton.TabIndex = 2;
@@ -881,7 +882,7 @@ namespace QBuild
             // Exit
             // 
             this.Exit.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Exit.Location = new System.Drawing.Point(386, 112);
+            this.Exit.Location = new System.Drawing.Point(386, 153);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(154, 23);
             this.Exit.TabIndex = 3;
@@ -893,33 +894,46 @@ namespace QBuild
             // 
             this.parentLabel.AutoSize = true;
             this.parentLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parentLabel.Location = new System.Drawing.Point(402, 24);
+            this.parentLabel.Location = new System.Drawing.Point(383, 62);
             this.parentLabel.Name = "parentLabel";
-            this.parentLabel.Size = new System.Drawing.Size(0, 14);
+            this.parentLabel.Size = new System.Drawing.Size(104, 14);
             this.parentLabel.TabIndex = 4;
+            this.parentLabel.Text = "Parent Child Part : ";
             this.parentLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // currentBodyLabel
             // 
             this.currentBodyLabel.AutoSize = true;
             this.currentBodyLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentBodyLabel.Location = new System.Drawing.Point(402, 50);
+            this.currentBodyLabel.Location = new System.Drawing.Point(383, 88);
             this.currentBodyLabel.Name = "currentBodyLabel";
             this.currentBodyLabel.Size = new System.Drawing.Size(82, 14);
             this.currentBodyLabel.TabIndex = 4;
             this.currentBodyLabel.Text = "Current Body :";
             // 
+            // headerLabel
+            // 
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.headerLabel.Location = new System.Drawing.Point(275, 13);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(264, 17);
+            this.headerLabel.TabIndex = 5;
+            this.headerLabel.Text = "Testing Functionality for Tree and Grid";
+            // 
             // QBuildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 394);
+            this.ClientSize = new System.Drawing.Size(776, 425);
+            this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.currentBodyLabel);
             this.Controls.Add(this.parentLabel);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.populateDataButton);
             this.Controls.Add(this.QBuildGridView);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.QBuildTreeView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "QBuildForm";
             this.Text = "QBuild";
@@ -939,7 +953,7 @@ namespace QBuild
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView QBuildTreeView;
         private QBuildDataSet qBuildDataSet;
         private System.Windows.Forms.BindingSource bomBindingSource;
         private QBuildDataSetTableAdapters.bomTableAdapter bomTableAdapter;
@@ -948,6 +962,7 @@ namespace QBuild
         private Button Exit;
         private Label parentLabel;
         private Label currentBodyLabel;
+        private Label headerLabel;
     }
 }
 
