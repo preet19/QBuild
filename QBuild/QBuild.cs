@@ -74,10 +74,11 @@ namespace QBuild
 
            
             // query to join the part and bom tables and return the selected columns
+            // using the entity framework to query the database
             var  result = (  from bom in db.boms
                              where bom.PARENT_NAME == tree
                              join part in db.parts
-                             on bom.PARENT_NAME equals part.NAME
+                             on bom.COMPONENT_NAME equals part.NAME
                           select new
                           {
                               bom.PARENT_NAME,
